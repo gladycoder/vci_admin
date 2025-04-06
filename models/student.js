@@ -93,10 +93,10 @@ updatedAt:{
 studentSchema.pre('validate', async function (next) {
     if (this.isNew) {
       try {
-        const counter = await StudentCounter.findByIdAndUpdate(
+        const counter = await StudentCounter.findOneAndUpdate(
           { _id: 'studentID' },
           { $inc: { seq: 1 } },
-          { new: true, upsert: true }
+          { new: true, upsert: true,maxTimeMS:30000  }
         );
         console.log(counter);
         
