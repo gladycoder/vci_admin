@@ -11,7 +11,7 @@ const StudentCounter = mongoose.model('StudentCounter', studentCounterSchema);
 
 // Function to ensure the counter document exists with the correct _id
 async function ensureCounterDocumentExists() {
-  const counter = await StudentCounter.findByIdAndUpdate(
+  const counter = await StudentCounter.findOneAndUpdate(
     { _id: 'studentID' }, 
     { $setOnInsert: { seq: 1 } },  // Set seq to 100 if the document is being inserted
     { upsert: true, new: true }       // Create if not exists and return the updated document
