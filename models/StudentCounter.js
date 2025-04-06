@@ -6,6 +6,7 @@ const studentCounterSchema = new mongoose.Schema({
   seq: { type: Number, default: 100 }     // The starting sequence for student IDs
 });
 
+
 // Model for StudentCounter
 const StudentCounter = mongoose.model('StudentCounter', studentCounterSchema);
 
